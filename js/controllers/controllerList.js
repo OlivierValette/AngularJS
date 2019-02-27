@@ -1,4 +1,4 @@
-app.controller("controllerList", function($scope){
+app.controller("controllerForm", function($scope){
 
     $scope.user = {};
     $scope.user.email = "";

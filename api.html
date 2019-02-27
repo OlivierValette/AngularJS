@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <script src="js/angular.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/controllers/controllerApi.js"></script>
+</head>
+<body ng-app="appAng" id="page-top" data-spy="scroll">
+
+    <div ng-controller="controllerApi" class="container">
+        <h1>Départements français</h1>
+
+        <div class="form-group">
+            Recherche :
+            <input type="text" ng-model="mesDeps">
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Code</th>
+                    <th scope="col">CodeRegion</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="dep in listeDeps | filter: mesDeps">
+                    <td>{{dep.nom}}</td>
+                    <td>{{dep.code}}</td>
+                    <td>{{dep.codeRegion}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+</body>
+</html>
