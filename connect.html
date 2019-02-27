@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="js/angular.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/controllers/controllerConnect.js"></script>
+</head>
+<body ng-app="appAng" id="page-top" data-spy="scroll">
+
+    <div ng-controller="controllerConnect">
+        <h1>Formulaire de connexion</h1>
+        <form name="connectForm" action="#">
+            <div>
+                Mail :
+                <input name="email" type="email" ng-model="user.email" required><br>
+            </div>
+            <div>
+                Mot de passe :
+                <input name="password" type="password" ng-model="user.password" required><br>
+            </div>
+            <div>
+                Genre :
+                <select name="gender" ng-model="user.gender">
+                    <option value="w">Femme</option>
+                    <option value="m">Homme</option>
+                    <option value="o">Autre</option>
+                </select>
+            </div>
+            <input name="button" type="submit" value="Se connecter" ng-disabled="user.email == '' || user.password == ''">
+        </form>
+        <p class="alert-danger" ng-show="!user.email && user.password">Email obligatoire</p>
+        <p class="alert-danger" ng-show="user.email && !user.password">Mot de passe obligatoire</p>
+        <p class="alert-danger" ng-show="!user.email && !user.password">Mot de passe et email obligatoires</p>
+
+        <div>
+            <h2>{{user}}</h2>
+            <h2>Debbug du formulaire</h2>
+            {{connectForm}}
+        </div>
+
+    </div>
+
+</body>
+</html>

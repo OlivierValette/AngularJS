@@ -2,6 +2,5 @@
 app.controller("controllerVue", function($scope){
 
     $scope.d = {};
-    $scope.d.test = "toto";
 
 });
