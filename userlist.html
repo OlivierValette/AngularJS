@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <script src="js/angular.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/controllers/controllerList.js"></script>
+</head>
+<body ng-app="appAng" id="page-top" data-spy="scroll">
+
+    <div ng-controller="controllerList" class="container">
+        <h1>Formulaire de connexion</h1>
+        <form name="connectForm" ng-submit="submit()">
+            <div class="form-group">
+                Mail :
+                <input name="email" type="email" ng-model="user.email" required><br>
+            </div>
+            <div class="form-group">
+                Mot de passe :
+                <input name="password" type="password" ng-model="user.password" required><br>
+            </div>
+            <div class="form-group">
+                Genre :
+                <select name="gender" ng-model="user.gender">
+                    <option value="w">Femme</option>
+                    <option value="m">Homme</option>
+                    <option value="o">Autre</option>
+                </select>
+            </div>
+            <input name="button" type="submit"
+                   value="Se connecter" class="btn btn-warning"
+                   ng-disabled="user.email == '' || user.password == ''">
+            <button ng-click="reset()" type="reset" class="btn btn-primary">Effacer</button>
+        </form>
+        <p class="alert-danger" ng-show="!user.email && user.password">Email obligatoire</p>
+        <p class="alert-danger" ng-show="user.email && !user.password">Mot de passe obligatoire</p>
+        <p class="alert-danger" ng-show="!user.email && !user.password">Mot de passe et email obligatoires</p>
+
+        <hr>
+
+        <div>
+            <h2>Liste des utilisateurs</h2>
+            <ul>
+                <li ng-repeat="utilisateur in listeUtilisateurs track by $index">
+                    {{utilisateur | json}}
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+</body>
+</html>
